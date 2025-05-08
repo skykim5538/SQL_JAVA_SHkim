@@ -1,0 +1,15 @@
+--Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. 
+--Your result cannot contain duplicates.
+
+
+select distinct city
+from station
+where city like '%a'
+or  city like '%e'
+or  city like '%i'
+or  city like '%o'
+or  city like '%u' ;
+
+
+--distinct 안붙여서 오답
+--문제에 cannot contain duplicates 중복을 제거하라 명시되어 있음.
