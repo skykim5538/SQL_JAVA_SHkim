@@ -1,0 +1,16 @@
+-- Query the list of CITY names from STATION which have vowels (i.e., a, e, i, o, and u) as both their first and last characters. Your result cannot contain duplicates.
+
+
+
+
+SELECT CITY 
+FROM STATION 
+-- 
+WHERE (LOWER(CITY) LIKE 'a%'or LOWER(CITY) LIKE 'e%' or LOWER(CITY) LIKE 'i%' or  LOWER(CITY) LIKE 'o%' or LOWER(CITY) LIKE 'u%')
+and  -- 첫번쨰 조건과 두번째 조건에 해당하는 데이터를 찾겠다. 
+(LOWER(CITY) LIKE '%a'or LOWER(CITY) LIKE '%e' or LOWER(CITY) LIKE '%i' or  LOWER(CITY) LIKE '%o' or LOWER(CITY) LIKE '%u');
+
+--같은 조건 다른 코드 
+WHERE (CITY LIKE 'A%' OR CITY LIKE 'E%' OR CITY LIKE 'I%' OR CITY LIKE 'O%' OR CITY LIKE 'U%' OR CITY LIKE 'a%' OR CITY LIKE 'e%' OR CITY LIKE 'i%' OR CITY LIKE 'o%' OR CITY LIKE 'u%' )
+AND 
+(CITY LIKE '%A' OR CITY LIKE'E' OR CITY LIKE '%I' OR CITY LIKE '%O' OR CITY LIKE '%U' OR CITY LIKE '%a' OR CITY LIKE '%e' OR CITY LIKE '%i' OR CITY LIKE '%o' OR CITY LIKE '%u' ) ;
