@@ -11,3 +11,14 @@ WHERE
 REGEXP_LIKE(LOWER(CITY), '^a|^e|^i|^o|^u')
 and
 REGEXP_LIKE(LOWER(CITY), 'a$|e$|i$|o$|u$');
+
+--정규식 
+where
+regexp_like(lower(city), '^[a,e,i,o,u]')
+and
+regexp_like(lower(city), '[a,e,i,o,u]$');
+
+
+--substr( 칼럼명, 시작글자, 끝날글자) in ( 포함시킬 글자)
+where substr(lower(city),1,1) in ('a', 'e', 'i', 'o','u')
+and substr(lower(city),-1,1) in ('a', 'e', 'i', 'o','u');
