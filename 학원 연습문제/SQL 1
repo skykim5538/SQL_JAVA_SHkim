@@ -1,0 +1,38 @@
+-- 직원 테이블(s_emp)에서 상위 봉급자 6등부터 10등까지 출력하는 쿼리를 작성하시오
+
+
+select  NAME, TITLE, SALARY, rank
+from(select NAME, TITLE, SALARY, rank() over(order by SALARY desc) as rank
+from s_emp)
+where rank between 6 and 10;
+
+
+--1  연봉별 순위  
+select NAME, TITLE, SALARY, rank() over(order by SALARY desc) as rank
+from s_emp;
+
+--2   1~10위 봉급을 구함 
+---> rownum이 원본 테이블 기준으로 정렬이 됨. 
+-- 순위 기준 10명이 아니라 원본 테이블 기준으로 10번까지 잘림. 
+select rownum, NAME, TITLE, SALARY, rank() over(order by SALARY desc) as 순위
+from s_emp
+where rownum <=10;
+
+
+--3 서브 쿼리로 연봉 순위를 묶고,  
+-- 메인쿼리에 rownum을 붙여서 순위별로 정렬된 순서가 기준이 됨. 
+-- 이 때 10위까지 자르기 위해서, where rank <=10을 넣음.  
+select rownum, NAME, TITLE, SALARY, rank
+from(select NAME, TITLE, SALARY, rank() over(order by SALARY desc) as rank
+from s_emp)
+where rank <=10;
+
+
+--4 최종
+--이 상태에서 1~4위를 자르면 된다 
+---->rownum을 쓰지 않고 6위부터 10위 자름. 
+
+select  NAME, TITLE, SALARY, rank
+from(select NAME, TITLE, SALARY, rank() over(order by SALARY desc) as rank
+from s_emp)
+where rank between 6 and 10;
