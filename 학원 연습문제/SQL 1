@@ -2,8 +2,10 @@
 
 
 select  NAME, TITLE, SALARY, rank
-from(select NAME, TITLE, SALARY, rank() over(order by SALARY desc) as rank
-from s_emp)
+from ( 
+select NAME, TITLE, SALARY, rank() over(order by SALARY desc) as rank
+from s_emp
+)
 where rank between 6 and 10;
 
 
@@ -31,7 +33,6 @@ where rank <=10;
 --4 최종
 --이 상태에서 1~4위를 자르면 된다 
 ---->rownum을 쓰지 않고 6위부터 10위 자름. 
-
 select  NAME, TITLE, SALARY, rank
 from(select NAME, TITLE, SALARY, rank() over(order by SALARY desc) as rank
 from s_emp)
