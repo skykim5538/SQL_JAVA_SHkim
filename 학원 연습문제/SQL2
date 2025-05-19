@@ -1,0 +1,6 @@
+--최근 12개월동안의 날짜(yyyymm)출력하기
+
+select to_char(add_months(trunc(sysdate, 'mm'),(level-1)),'yyyymm')  from dual 
+
+
+connect by level <= 12;
