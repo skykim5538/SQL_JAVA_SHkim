@@ -1,0 +1,13 @@
+-- 2020년 크리스마스는 무슨 요일인가
+SELECT TO_CHAR(TO_DATE('2020-12-25' , 'YYYY-MM-DD') ,'DAY') 요일
+FROM   dual;
+
+
+--15년도 월별 입사자의 수를 세어서 출력하시오.
+--단, 1월 12월까지 월별로 출력하시오. 입사자가 없는달은 0으로 출력하시오
+SELECT COUNT( TO_CHAR(START_DATE ,'MM' ) ) "입사월"
+FROM S_EMP 
+WHERE SUBSTR( START_DATE , 1, 2) LIKE 15
+GROUP BY  TO_CHAR(START_DATE ,'MM' );
+
+-- 테이블에 없는 월 추가 필요 
